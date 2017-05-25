@@ -11,25 +11,26 @@
         <style>
             body {font-family: 'Montserrat', sans-serif; padding:0px; margin: 0px;}
             .box {
-              background-color: #444;
-              color: #fff;
-              border-radius: 5px;
-              padding: 20px;
-              font-size: 150%;
+                background-color: #444;
+                color: #fff;
+                border-radius: 0px;
+                border: 1px solid #fff;
+                padding: 20px;
+                font-size: 150%;
             }
 
             .box:nth-child(even) {
-              background-color: #ccc;
-              color: #000;
+                background-color: #ccc;
+                color: #000;
             }
 
             .wrapper {
-              width: 600px;
-              display: grid;
-              grid-gap: 10px;
-              grid-template-columns: repeat(6, 100px);
-              grid-template-rows: 100px 100px 100px;
-              grid-auto-flow: column;
+                width: 100%;
+                min-height: 700px;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr;
+                grid-auto-flow: column;
             }
         </style>
     </head>
@@ -51,6 +52,10 @@
           <div class="box">10</div>
           <div class="box">11</div>
           <div class="box">12</div>
+          <div class="box">13</div>
+          <div class="box">14</div>
+          <div class="box">15</div>
+          <div class="box">16</div>
         </div>
     </body>
 </html>
