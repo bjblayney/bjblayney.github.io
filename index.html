@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <style>
             body {font-family: 'Montserrat', sans-serif; padding:0px; margin: 0px;}
-            iframe {
+/*             iframe {
                 position: fixed;
                 right: 0;
                 bottom: 0;
@@ -19,6 +19,12 @@
                 width: auto;
                 height: auto;
                 z-index: -100;
+            } */
+            .container {
+              grid-template-columns: 21%;
+              grid-template-rows: 21%; 
+              grid-column-gap: 1%;
+              grid-row-gap: 1%;
             }
         </style>
     </head>
@@ -26,6 +32,16 @@
         <!--[if lte IE 9]>
             <p class="browserupgrade">How dare you? Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your life.</p>
         <![endif]-->
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/rZTOU3cmx88" frameborder="0" allowfullscreen></iframe>
+<!--         <iframe width="560" height="315" src="https://www.youtube.com/embed/rZTOU3cmx88" frameborder="0" allowfullscreen></iframe> -->
+        <div class="container">
+            <div class="item item-1"></div>
+            <div class="item item-2"></div>
+            <div class="item item-3"></div>
+            <div class="item item-4"></div>
+            <div class="item item-5"></div>
+            <div class="item item-6"></div>
+            <div class="item item-7"></div>
+            <div class="item item-8"></div>
+        </div>
     </body>
 </html>
