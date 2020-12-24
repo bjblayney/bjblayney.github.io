@@ -15,7 +15,7 @@ function App() {
         <h1>BJ Blayney</h1>
         <a
           className="App-link"
-          href="https://www.google.com/search?q=sit+and+know+youre+sitting"
+          href="https://www.canadahelps.org/en/explore/popular-now/"
           target="_blank"
           rel="noopener noreferrer"
         >
