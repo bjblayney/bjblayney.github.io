@@ -22,7 +22,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Risky Click
+          Donate to someone in need
         </a>
       </header>
     </div>
