@@ -1,6 +1,8 @@
 import bg from "./dark-brown-wood-table.jpg";
 import "./App.css";
 
+import Tip from "./components/tip";
+
 function App() {
   const divStyle = {
     width: "100vw",
@@ -13,6 +15,7 @@ function App() {
     <div className="App">
       <header className="App-header" style={divStyle}>
         <h1>BJ Blayney</h1>
+        <Tip />
         <a
           className="App-link"
           href="https://www.canadahelps.org/en/explore/popular-now/"
