@@ -1,5 +1,18 @@
 .tipForm {
     width: auto;
     text-align: left;
-    margin-bottom: 1rem;
+    margin: 1rem;
+    display: flex;
+    background-color:rgba(255,255,255,0.8);;
+    border-radius: 6px;
+    align-items: center;
 } 
+.tipForm div {
+    padding: 12px;
+}
+@media only screen and (max-width: 768px) { 
+    .tipForm {
+        flex-direction: column;
+        margin: .3rem;
+    }
+  }
