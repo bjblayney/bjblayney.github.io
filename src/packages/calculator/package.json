@@ -1,8 +1,11 @@
 {
   "name": "@bjblayney/calculator",
-  "repository":"https://github.com/bjblayney/bjblayney.github.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bjblayney/bjblayney.github.io.git"
+  },
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -36,5 +39,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/bjblayney/bjblayney.github.io/issues"
+  },
+  "homepage": "https://github.com/bjblayney/bjblayney.github.io#readme",
+  "main": "calculator.js",
+  "author": "bjblayney",
+  "license": "ISC",
+  "description": ""
 }
