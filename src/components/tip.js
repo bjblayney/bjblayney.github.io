@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import "../styles/tip.css";
-
-import { Heading, TextInputField } from "evergreen-ui";
+import React, { useState } from 'react';
+import '../styles/tip.css';
 
 function Tip() {
   const [withTip, setWithTip] = useState(0);
@@ -17,7 +15,7 @@ function Tip() {
   return (
     <div className="tipForm">
       <div className="item">
-        <TextInputField
+        <input
           label="Bill Total"
           placeholder="0"
           marginBottom={0}
@@ -28,7 +26,7 @@ function Tip() {
           }}
         />
 
-        <TextInputField
+        <input
           label="Tip Percentage"
           hint="Default 20%"
           placeholder="20"
@@ -40,35 +38,27 @@ function Tip() {
             setTip(e.target.value);
           }}
         />
-        <TextInputField
+        <input
           label="# of Peeps"
           placeholder="1"
           type="number"
           marginBottom={0}
           value={peeps < 1 ? 1 : peeps}
           onChange={(e) => {
-            calculateTip(
-              total,
-              tip / 100,
-              e.target.value < 1 ? 1 : e.target.value
-            );
+            calculateTip(total, tip / 100, e.target.value < 1 ? 1 : e.target.value);
             setPeeps(e.target.value < 1 ? 1 : e.target.value);
           }}
         />
       </div>
       <div className="item">
-        <Heading size={800}>
-          Tip:{" "}
-          {parseFloat(
-            (parseFloat(total) * (parseFloat(tip) / 100)) / peeps
-          ).toFixed(2) > 0
-            ? parseFloat(
-                (parseFloat(total) * (parseFloat(tip) / 100)) / peeps
-              ).toFixed(2)
+        <h2>
+          Tip:{' '}
+          {parseFloat((parseFloat(total) * (parseFloat(tip) / 100)) / peeps).toFixed(2) > 0
+            ? parseFloat((parseFloat(total) * (parseFloat(tip) / 100)) / peeps).toFixed(2)
             : 0}
-        </Heading>
+        </h2>
 
-        <Heading size={800}>Total: {parseFloat(withTip).toFixed(2)}</Heading>
+        <h2>Total: {parseFloat(withTip).toFixed(2)}</h2>
       </div>
     </div>
   );
