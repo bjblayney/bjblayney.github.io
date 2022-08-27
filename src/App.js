@@ -1,29 +1,29 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Fragment } from 'react';
 import { Tab } from '@headlessui/react';
 
 import bg from './dark-brown-wood-table.jpg';
 import './App.css';
 
-import Tip from './components/tip';
+// import Tip from './components/tip';
 
-function Home() {
-  return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/tips">Tip Calculator</Link>
-        </li>
-        <li>
-          <a className="App-link" href="https://www.canadahelps.org/en/explore/popular-now/" target="_blank" rel="noopener noreferrer">
-            Donate to someone in need
-          </a>
-        </li>
-      </ul>
-    </nav>
-  );
-}
+// function Home() {
+//   return (
+//     <nav>
+//       <ul>
+//         <li>
+//           <Link to="/tips">Tip Calculator</Link>
+//         </li>
+//         <li>
+//           <a className="App-link" href="https://www.canadahelps.org/en/explore/popular-now/" target="_blank" rel="noopener noreferrer">
+//             Donate to someone in need
+//           </a>
+//         </li>
+//       </ul>
+//     </nav>
+//   );
+// }
 
 function App() {
   const divStyle = {
