@@ -6,7 +6,7 @@ import { Tab } from '@headlessui/react';
 import bg from './dark-brown-wood-table.jpg';
 import './App.css';
 
-// import Tip from './components/tip';
+import Tip from './components/tip';
 
 // function Home() {
 //   return (
@@ -73,7 +73,9 @@ function App() {
           </Tab.List>
           <Tab.Panels>
             <Tab.Panel>1</Tab.Panel>
-            <Tab.Panel>2</Tab.Panel>
+            <Tab.Panel>
+              <Tip />
+            </Tab.Panel>
           </Tab.Panels>
         </Tab.Group>
       </header>
