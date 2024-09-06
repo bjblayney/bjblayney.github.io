@@ -3,6 +3,7 @@
   "description": "The Bureau",
   "version": "1.0.0",
   "main": "src/index.js",
+  "homepage": "https://bjblayney.github.io",
   "dependencies": {
     "@react-spring/web": "*",
     "react": "^18.2.0",
@@ -12,6 +13,8 @@
     "styled-components": "^5.3.6"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -22,5 +25,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  }
 }
