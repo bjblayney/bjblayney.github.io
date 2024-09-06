@@ -1,86 +1,80 @@
-import * as React from 'react';
-// import { Link } from 'react-router-dom';
-import { Fragment } from 'react';
-import { Tab } from '@headlessui/react';
+import React, { useRef, useState, useEffect } from 'react';
+import { useSpring, animated } from '@react-spring/web';
+import useMeasure from 'react-use-measure';
+import { Container, Title, Frame, Content, toggle } from './styles';
+import * as Icons from './icons';
 
-import bg from './dark-brown-wood-table.jpg';
-import './App.css';
-
-import Tip from './components/tip';
-
-// function Home() {
-//   return (
-//     <nav>
-//       <ul>
-//         <li>
-//           <Link to="/tips">Tip Calculator</Link>
-//         </li>
-//         <li>
-//           <a className="App-link" href="https://www.canadahelps.org/en/explore/popular-now/" target="_blank" rel="noopener noreferrer">
-//             Donate to someone in need
-//           </a>
-//         </li>
-//       </ul>
-//     </nav>
-//   );
-// }
-
-function App() {
-  const divStyle = {
-    width: '100vw',
-    height: '100vh',
-    backgroundImage: `url(${bg})`,
-    backgroundSize: 'cover',
-  };
-
-  return (
-    <div className="App">
-      <header className="App-header" style={divStyle}>
-        <h1>BJ Blayney</h1>
-        {/* <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="tips" element={<Tip />} />
-        </Routes> */}
-
-        <Tab.Group>
-          <Tab.List>
-            <Tab as={Fragment}>
-              {({ selected }) => (
-                <button
-                  className={
-                    selected
-                      ? 'rounded-lg px-3 py-2 font-medium backdrop-blur-sm bg-white/30 text-slate-900'
-                      : 'rounded-lg px-3 py-2 text-slate-700 font-medium hover:backdrop-blur-sm hover:bg-white/30 hover:text-slate-900'
-                  }
-                >
-                  Camera 1
-                </button>
-              )}
-            </Tab>
-            <Tab as={Fragment}>
-              {({ selected }) => (
-                <button
-                  className={
-                    selected
-                      ? 'rounded-lg px-3 py-2 font-medium backdrop-blur-sm bg-white/30 text-slate-900'
-                      : 'rounded-lg px-3 py-2 text-slate-700 font-medium hover:backdrop-blur-sm hover:bg-white/30 hover:text-slate-900'
-                  }
-                >
-                  Camera 2
-                </button>
-              )}
-            </Tab>
-          </Tab.List>
-          <Tab.Panels>
-            <Tab.Panel>1</Tab.Panel>
-            <Tab.Panel>
-              <Tip />
-            </Tab.Panel>
-          </Tab.Panels>
-        </Tab.Group>
-      </header>
-    </div>
-  );
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  }, [value]);
+  return ref.current;
 }
 
-export default App;
+const Tree = React.memo(({ children, name, style, defaultOpen = false }) => {
+  const [isOpen, setOpen] = useState(defaultOpen);
+  const previous = usePrevious(isOpen);
+  const [ref, { height: viewHeight }] = useMeasure();
+  const { height, opacity, y } = useSpring({
+    from: { height: 0, opacity: 0, y: 0 },
+    to: {
+      height: isOpen ? viewHeight : 0,
+      opacity: isOpen ? 1 : 0,
+      y: isOpen ? 0 : 20,
+    },
+  });
+  const Icon = Icons[`${children ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`];
+  return (
+    <Frame>
+      <Icon style={{ ...toggle, opacity: children ? 1 : 0.3 }} onClick={() => setOpen(!isOpen)} />
+      <Title style={style}>{name}</Title>
+      <Content
+        style={{
+          opacity,
+          height: isOpen && previous === isOpen ? 'auto' : height,
+        }}
+      >
+        <animated.div ref={ref} style={{ y }} children={children} />
+      </Content>
+    </Frame>
+  );
+});
+
+export default function App() {
+  const year = new Date().getFullYear();
+  return (
+    <Container>
+      <Tree name={`bj blayney ${year}`}>
+        <Tree name="Hello" />
+        {/* <Tree name="click here">
+          <Tree name="why did you click?">
+            <Tree name="child 1" style={{ color: '#37ceff' }} />
+            <Tree name="child 2" style={{ color: '#37ceff' }} />
+            <Tree name="child 3" style={{ color: '#37ceff' }} />
+            <Tree name="custom content">
+              <div
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  height: 200,
+                  padding: 10,
+                }}
+              >
+                <div
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    background: 'black',
+                    borderRadius: 5,
+                  }}
+                />
+              </div>
+            </Tree>
+          </Tree>
+        </Tree>
+        <Tree name={<span>🙀 something something</span>} /> */}
+      </Tree>
+    </Container>
+  );
+}
