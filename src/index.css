@@ -15,3 +15,46 @@ body {
 *:before {
   box-sizing: border-box;
 }
+
+.image-grid {
+  display: flex;
+  align-items: center; /* Center align images vertically */
+  overflow-x: scroll;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #007bff #f1f1f1; /* For Firefox */
+  gap: 10px; /* Space between images */
+  padding: 10px; /* Space around the images */
+}
+
+/* For WebKit browsers (Chrome, Safari) */
+.image-grid::-webkit-scrollbar {
+  height: 8px; /* Height of horizontal scrollbar */
+}
+
+.image-grid::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+.image-grid::-webkit-scrollbar-thumb {
+  background-color: #007bff; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners of the scrollbar thumb */
+  border: 2px solid #f1f1f1; /* Padding around the scrollbar thumb */
+}
+
+.image-grid img {
+  display: block; /* Ensure images are block elements */
+  margin: 0; /* Remove default margin */
+}
+
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0056b3;
+}

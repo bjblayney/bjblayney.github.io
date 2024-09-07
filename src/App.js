@@ -79,6 +79,8 @@ export default function App() {
           <div
             style={{
               padding: 10,
+              position: 'relative',
+              width: '100%',
             }}
           >
             <MainPageImages />

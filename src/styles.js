@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { animated } from '@react-spring/web';
 
 export const Container = styled.div`
-  width: 100%;
+  width: 300px;
   height: 100%;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   overflow: hidden;
   font-family: ui-monospace, monospace;

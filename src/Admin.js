@@ -6,8 +6,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { doc, setDoc, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from './firebase'; // Import Firestore
 
-import { Container } from './styles';
-
 import { signOut } from 'firebase/auth';
 
 const Admin = () => {
@@ -65,21 +63,62 @@ const Admin = () => {
   }
 
   return (
-    <Container>
+    <div style={{ display: 'flex', flexDirection: 'column', width: '300px', margin: '0 auto', gap: '1rem', alignItems: 'center' }}>
       <h1>Admin Page</h1>
-      <button onClick={handleSignOut}>Sign Out</button>
-
-      {/* Image upload form here */}
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={handleFileUpload}>Upload</button>
+      <button
+        onClick={handleSignOut}
+        style={{
+          padding: '0.5rem 1rem',
+          border: 'none',
+          borderRadius: '4px',
+          backgroundColor: '#007BFF',
+          color: '#fff',
+          cursor: 'pointer',
+          transition: 'background-color 0.3s',
+        }}
+        onMouseOver={(e) => (e.target.style.backgroundColor = '#0056b3')}
+        onMouseOut={(e) => (e.target.style.backgroundColor = '#007BFF')}
+      >
+        Sign Out
+      </button>
+      <input
+        type="file"
+        onChange={handleFileChange}
+        style={{
+          padding: '0.5rem',
+          border: '1px solid #ccc',
+          borderRadius: '4px',
+          fontSize: '1rem',
+          outline: 'none',
+          transition: 'border-color 0.3s',
+        }}
+        onFocus={(e) => (e.target.style.borderColor = '#007BFF')}
+        onBlur={(e) => (e.target.style.borderColor = '#ccc')}
+      />
+      <button
+        onClick={handleFileUpload}
+        style={{
+          padding: '0.5rem 1rem',
+          border: 'none',
+          borderRadius: '4px',
+          backgroundColor: '#28a745',
+          color: '#fff',
+          cursor: 'pointer',
+          transition: 'background-color 0.3s',
+        }}
+        onMouseOver={(e) => (e.target.style.backgroundColor = '#218838')}
+        onMouseOut={(e) => (e.target.style.backgroundColor = '#28a745')}
+      >
+        Upload
+      </button>
       {progress > 0 && <p>Upload Progress: {progress}%</p>}
       {imageUrl && (
-        <div>
+        <div style={{ textAlign: 'center' }}>
           <h3>Uploaded Image:</h3>
-          <img src={imageUrl} alt="Uploaded" style={{ width: '300px' }} />
+          <img src={imageUrl} alt="Uploaded" style={{ width: '100%', maxWidth: '300px', borderRadius: '4px' }} />
         </div>
       )}
-    </Container>
+    </div>
   );
 };
 

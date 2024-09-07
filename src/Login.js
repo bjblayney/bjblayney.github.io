@@ -22,13 +22,61 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div style={{ display: `flex`, flexDirection: `column`, width: `300px`, margin: `0 auto` }}>
       <h2>Login</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleLogin}>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-        <button type="submit">Login</button>
+      <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          required
+          style={{
+            padding: '0.75rem',
+            border: '1px solid #ccc',
+            borderRadius: '4px',
+            fontSize: '1rem',
+            outline: 'none',
+            transition: 'border-color 0.3s',
+          }}
+          onFocus={(e) => (e.target.style.borderColor = '#007BFF')}
+          onBlur={(e) => (e.target.style.borderColor = '#ccc')}
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          required
+          style={{
+            padding: '0.75rem',
+            border: '1px solid #ccc',
+            borderRadius: '4px',
+            fontSize: '1rem',
+            outline: 'none',
+            transition: 'border-color 0.3s',
+          }}
+          onFocus={(e) => (e.target.style.borderColor = '#007BFF')}
+          onBlur={(e) => (e.target.style.borderColor = '#ccc')}
+        />
+        <button
+          type="submit"
+          style={{
+            padding: '0.75rem',
+            border: 'none',
+            borderRadius: '4px',
+            backgroundColor: '#007BFF',
+            color: '#fff',
+            fontSize: '1rem',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s',
+          }}
+          onMouseOver={(e) => (e.target.style.backgroundColor = '#0056b3')}
+          onMouseOut={(e) => (e.target.style.backgroundColor = '#007BFF')}
+        >
+          Login
+        </button>
       </form>
     </div>
   );

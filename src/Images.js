@@ -48,15 +48,29 @@ const MainPageImages = () => {
 
   return (
     <div>
-      <h1>Latest Uploaded Images</h1>
+      <span>Latest Uploaded Images</span>
       <div className="image-grid">
         {images.map((image) => (
-          <img key={image.id} src={image.url} alt={image.name} style={{ width: '300px', margin: '10px' }} />
+          <img key={image.id} src={image.url} alt={image.name} style={{ width: '300px', borderRadius: '4px' }} />
         ))}
       </div>
       {loading && <p>Loading...</p>}
       {!loading && lastVisible && (
-        <button onClick={loadMoreImages} style={{ display: `block`, margin: `5px 0px` }}>
+        <button
+          onClick={loadMoreImages}
+          style={{
+            padding: '0.5rem 1rem',
+            border: 'none',
+            borderRadius: '4px',
+            backgroundColor: '#007BFF',
+            color: '#fff',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s',
+            marginTop: '1rem',
+          }}
+          onMouseOver={(e) => (e.target.style.backgroundColor = '#0056b3')}
+          onMouseOut={(e) => (e.target.style.backgroundColor = '#007BFF')}
+        >
           Load More
         </button>
       )}
