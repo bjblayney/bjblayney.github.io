@@ -1,5 +1,4 @@
-// src/App.js
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Login from './Login';
 import App from './App';
 import Admin from './Admin';
