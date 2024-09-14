@@ -28,7 +28,7 @@ const Tree = React.memo(({ children, name, style, defaultOpen = false }) => {
   const Icon = Icons[`${children ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`];
   return (
     <Frame>
-      <Icon style={{ ...toggle, opacity: children ? 1 : 0.3 }} onClick={() => setOpen(!isOpen)} />
+      <Icon style={{ ...toggle, opacity: children ? 1 : 0.3, width: `50px` }} onClick={() => setOpen(!isOpen)} />
       <Title style={style}>{name}</Title>
       <Content
         style={{
@@ -75,7 +75,7 @@ export default function App() {
           </Tree>
         </Tree>
         <Tree name={<span>🙀 something something</span>} /> */}
-        <Tree name="📷">
+        <Tree name={<span style={{ fontSize: `3rem` }}>📷</span>}>
           <div
             style={{
               padding: 10,

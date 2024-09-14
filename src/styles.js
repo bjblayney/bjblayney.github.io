@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { animated } from '@react-spring/web';
 
 export const Container = styled.div`
-  width: 300px;
+  width: 100%;
   height: 100%;
   margin: 0 auto;
-  padding: 0;
+  padding: 20px;
   overflow: hidden;
   font-family: ui-monospace, monospace;
-  font-size: 14px;
+  font-size: 1.5rem;
   line-height: 21px;
   -webkit-user-select: none;
   user-select: none;
@@ -42,8 +42,8 @@ export const Content = styled(animated.div)`
 `;
 
 export const toggle = {
-  width: '1em',
-  height: '1em',
+  width: '50px',
+  height: '50px',
   marginRight: 10,
   cursor: 'pointer',
   verticalAlign: 'middle',
