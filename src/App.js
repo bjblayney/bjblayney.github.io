@@ -3,7 +3,6 @@ import { useSpring, animated } from '@react-spring/web';
 import useMeasure from 'react-use-measure';
 import { Container, Title, Frame, Content, toggle } from './styles';
 import * as Icons from './icons';
-import MainPageImages from './Images';
 
 function usePrevious(value) {
   const ref = useRef();
@@ -75,7 +74,7 @@ export default function App() {
           </Tree>
         </Tree>
         <Tree name={<span>🙀 something something</span>} /> */}
-        <Tree name={<span style={{ fontSize: `3rem` }}>📷</span>}>
+        {/* <Tree name={<span style={{ fontSize: `3rem` }}>📷</span>}>
           <div
             style={{
               padding: 10,
@@ -85,7 +84,16 @@ export default function App() {
           >
             <MainPageImages />
           </div>
-        </Tree>
+        </Tree> */}
+        <Tree
+          name={
+            <span style={{ fontSize: `3rem` }}>
+              <a href="#/images" style={{ fontSize: `3rem`, textDecoration: 'none' }}>
+                📷
+              </a>
+            </span>
+          }
+        />
       </Tree>
     </Container>
   );

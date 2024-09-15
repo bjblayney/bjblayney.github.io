@@ -39,4 +39,14 @@ const CloseSquareO = function (props) {
   );
 };
 
-export { PlusSquareO, MinusSquareO, CloseSquareO };
+const BackSquareO = function (props) {
+  return (
+    <svg {...props} viewBox="64 -65 897 897">
+      <g>
+        <path d="M888 760v0v0v-753v0h-752v0v753v0h752zM888 832h-752q-30 0 -51 -21t-21 -51v-753q0 -29 21 -50.5t51 -21.5h753q29 0 50.5 21.5t21.5 50.5v753q0 30 -21.5 51t-51.5 21v0zM540 556q-10 11 -25 11t-25 -11l-161 -161q-11 -11 -11 -25t11 -25l161 -161q10 -11 25 -11t25 11q11 10 11 25t-11 25l-100 100h335q15 0 25.5 10.5t10.5 25.5v0q0 15 -10.5 25.5t-25.5 10.5h-335l100 100q11 10 11 25t-11 25z" />
+      </g>
+    </svg>
+  );
+};
+
+export { PlusSquareO, MinusSquareO, CloseSquareO, BackSquareO };
