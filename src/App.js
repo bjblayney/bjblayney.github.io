@@ -25,9 +25,26 @@ const Tree = React.memo(({ children, name, style, defaultOpen = false }) => {
     },
   });
   const Icon = Icons[`${children ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`];
+
+  // Click handler for the icon
+  const handleClick = () => {
+    if (React.isValidElement(name) && name.props.children) {
+      // Check if any child element is an anchor tag with an href
+      const anchor = React.Children.toArray(name.props.children).find(
+        (child) => React.isValidElement(child) && child.type === 'a' && child.props.href
+      );
+
+      // If an anchor is found, use its href
+      if (anchor) {
+        window.location.hash = anchor.props.href;
+      }
+    }
+    setOpen(!isOpen);
+  };
+
   return (
     <Frame>
-      <Icon style={{ ...toggle, opacity: children ? 1 : 0.3, width: `50px` }} onClick={() => setOpen(!isOpen)} />
+      <Icon style={{ ...toggle, opacity: children ? 1 : 0.3, width: `50px` }} onClick={handleClick} />
       <Title style={style}>{name}</Title>
       <Content
         style={{
@@ -47,7 +64,7 @@ export default function App() {
     <Container>
       <Tree name={`bj blayney ${year}`}>
         <Tree name="Hello" />
-        {/* <Tree name="click here">
+        <Tree name="click here">
           <Tree name="why did you click?">
             <Tree name="child 1" style={{ color: '#37ceff' }} />
             <Tree name="child 2" style={{ color: '#37ceff' }} />
@@ -73,18 +90,6 @@ export default function App() {
             </Tree>
           </Tree>
         </Tree>
-        <Tree name={<span>🙀 something something</span>} /> */}
-        {/* <Tree name={<span style={{ fontSize: `3rem` }}>📷</span>}>
-          <div
-            style={{
-              padding: 10,
-              position: 'relative',
-              width: '100%',
-            }}
-          >
-            <MainPageImages />
-          </div>
-        </Tree> */}
         <Tree
           name={
             <span style={{ fontSize: `3rem` }}>
@@ -93,7 +98,18 @@ export default function App() {
               </a>
             </span>
           }
-        />
+        >
+          <span></span>
+        </Tree>
+        <Tree
+          name={
+            <span>
+              <a href="#/gradient">Gradient</a>
+            </span>
+          }
+        >
+          <span></span>
+        </Tree>
       </Tree>
     </Container>
   );

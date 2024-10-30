@@ -3,6 +3,7 @@ import Login from './Login';
 import App from './App';
 import Admin from './Admin';
 import ImageGallery from './ImageLayout';
+import GradientBackground from './GradientBackground';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from './firebase';
 
@@ -22,6 +23,7 @@ function AppRouter() {
         {/* Other routes */}
         <Route path="/" element={<App />} />
         <Route path="/images" element={<ImageGallery />} />
+        <Route path="/gradient" element={<GradientBackground />} />
       </Routes>
     </Router>
   );
