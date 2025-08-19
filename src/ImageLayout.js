@@ -52,14 +52,17 @@ const Title = styled.h1`
 
 const Gallery = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-auto-rows: 0;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 1rem;
 `;
 
 const ImageWrapper = styled.div`
-  grid-row-end: span ${(props) => Math.ceil(props.height / 10)};
+  aspect-ratio: 3/5;
+  width: 100%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const StyledImage = styled(animated.img)`
@@ -67,13 +70,13 @@ const StyledImage = styled(animated.img)`
   height: 100%;
   object-fit: cover;
   border-radius: 8px;
+  aspect-ratio: 3/5;
 `;
 
-const ImageItem = ({ src, alt, width, height }) => {
+const ImageItem = ({ src, alt }) => {
   const [props, set] = useSpring(() => ({ scale: 1 }));
-
   return (
-    <ImageWrapper height={height}>
+    <ImageWrapper>
       <StyledImage src={src} alt={alt} style={props} onMouseEnter={() => set({ scale: 1.05 })} onMouseLeave={() => set({ scale: 1 })} />
     </ImageWrapper>
   );
@@ -91,7 +94,7 @@ export default function ImageGallery() {
   const fetchImages = async () => {
     setLoading(true);
     const imagesRef = collection(db, 'images');
-    const q = query(imagesRef, orderBy('timestamp', 'desc'), limit(4));
+    const q = query(imagesRef, orderBy('timestamp', 'desc'), limit(6));
     const snapshot = await getDocs(q);
 
     const imageList = snapshot.docs.map((doc) => ({
@@ -109,7 +112,7 @@ export default function ImageGallery() {
 
     setLoading(true);
     const imagesRef = collection(db, 'images');
-    const q = query(imagesRef, orderBy('timestamp', 'desc'), startAfter(lastVisible), limit(4));
+    const q = query(imagesRef, orderBy('timestamp', 'desc'), startAfter(lastVisible), limit(6));
     const snapshot = await getDocs(q);
 
     const moreImages = snapshot.docs.map((doc) => ({
@@ -146,10 +149,17 @@ export default function ImageGallery() {
         <Title>My Image Gallery</Title>
       </Header>
       <Gallery>
-        {images.map((image, index) => (
-          <ImageItem key={image.id} src={image.url} alt={image.alt} width={`300`} height={'485'} />
+        {images.map((image) => (
+          <ImageItem key={image.id} src={image.url} alt={image.alt} />
         ))}
       </Gallery>
+      {lastVisible && (
+        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+          <button onClick={loadMoreImages} disabled={loading} style={{ padding: '0.75rem 2rem', fontSize: '1.1rem', borderRadius: 8, border: 'none', background: '#37ceff', color: '#fff', cursor: 'pointer' }}>
+            {loading ? 'Loading...' : 'Load More'}
+          </button>
+        </div>
+      )}
     </Container>
   );
 }

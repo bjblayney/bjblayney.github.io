@@ -63,13 +63,47 @@ export default function App() {
   return (
     <Container>
       <Tree name={`bj blayney ${year}`}>
-        <Tree name="Hello" />
+        <Tree name="hello" />
         <Tree name="click here">
-          <Tree name="why did you click?">
-            <Tree name="child 1" style={{ color: '#37ceff' }} />
-            <Tree name="child 2" style={{ color: '#37ceff' }} />
-            <Tree name="child 3" style={{ color: '#37ceff' }} />
-            <Tree name="custom content">
+          <Tree name="pop quiz, hot shot!">
+            <Tree
+              name={
+                <a
+                  href="https://bjblayney.github.io/dev-reps/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#37ceff', textDecoration: 'underline' }}
+                >
+                  Daily Quiz v1.0
+                </a>
+              }
+            />
+            <Tree
+              name={
+                <a
+                  href="https://bjblayney.github.io/can-geo-game/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#37ceff', textDecoration: 'underline' }}
+                >
+                  Geography Quiz v1.0
+                </a>
+              }
+            />
+            <Tree
+              name={
+                <a
+                  href="https://bjblayney.github.io/french-verb-trainer/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#37ceff', textDecoration: 'underline' }}
+                >
+                  French Canadian Verb Trainer v1.0
+                </a>
+              }
+            />
+            
+            <Tree name="But you don't have to take my word for it!">
               <div
                 style={{
                   position: 'relative',
@@ -78,22 +112,15 @@ export default function App() {
                   padding: 10,
                 }}
               >
-                <div
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    background: 'black',
-                    borderRadius: 5,
-                  }}
-                />
+                <img src="knowing.png" alt="Knowing" style={{ width: '100%', height: '100%' }} />
               </div>
             </Tree>
           </Tree>
         </Tree>
         <Tree
           name={
-            <span style={{ fontSize: `3rem` }}>
-              <a href="#/images" style={{ fontSize: `3rem`, textDecoration: 'none' }}>
+            <span>
+              <a href="#/images" style={{ textDecoration: 'none', fontSize: '3rem', verticalAlign: 'middle' }}>
                 📷
               </a>
             </span>
