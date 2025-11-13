@@ -137,6 +137,20 @@ export default function App() {
         >
           <span></span>
         </Tree>
+        <Tree
+          name={
+            <a
+              href="https://bjblayney.github.io/pick-two/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: '#37ceff', textDecoration: 'underline' }}
+            >
+              The Choice Paradox
+            </a>
+          }
+        >
+          <span></span>
+        </Tree>
       </Tree>
     </Container>
   );
