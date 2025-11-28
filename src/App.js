@@ -28,17 +28,37 @@ const Tree = React.memo(({ children, name, style, defaultOpen = false }) => {
 
   // Click handler for the icon
   const handleClick = () => {
-    if (React.isValidElement(name) && name.props.children) {
-      // Check if any child element is an anchor tag with an href
-      const anchor = React.Children.toArray(name.props.children).find(
-        (child) => React.isValidElement(child) && child.type === 'a' && child.props.href
-      );
+    let anchor = null;
+    if (React.isValidElement(name)) {
+      // If the `name` itself is an anchor, use it
+      if (name.type === 'a' && name.props && name.props.href) {
+        anchor = name;
+      } else if (name.props && name.props.children) {
+        // Otherwise check if any child element is an anchor tag with an href
+        anchor = React.Children.toArray(name.props.children).find(
+          (child) => React.isValidElement(child) && child.type === 'a' && child.props.href
+        );
+      }
 
-      // If an anchor is found, use its href
       if (anchor) {
-        window.location.hash = anchor.props.href;
+        const href = anchor.props.href;
+        const target = anchor.props.target;
+
+        // If it's an internal/hash link, update the hash
+        if (typeof href === 'string' && href.startsWith('#')) {
+          window.location.hash = href;
+        } else if (typeof href === 'string') {
+          // For external links: if anchor wanted a new tab, open in new tab
+          if (target === '_blank') {
+            window.open(href, '_blank');
+          } else {
+            // otherwise navigate in current tab
+            window.location.href = href;
+          }
+        }
       }
     }
+
     setOpen(!isOpen);
   };
 
@@ -72,7 +92,7 @@ export default function App() {
                   href="https://bjblayney.github.io/dev-reps/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: '#37ceff', textDecoration: 'underline' }}
+                  style={{ color: '#000000', textDecoration: 'underline' }}
                 >
                   Daily Quiz v1.0
                 </a>
@@ -84,7 +104,7 @@ export default function App() {
                   href="https://bjblayney.github.io/can-geo-game/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: '#37ceff', textDecoration: 'underline' }}
+                  style={{ color: '#000000', textDecoration: 'underline' }}
                 >
                   Geography Quiz v1.0
                 </a>
@@ -96,7 +116,7 @@ export default function App() {
                   href="https://bjblayney.github.io/french-verb-trainer/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: '#37ceff', textDecoration: 'underline' }}
+                  style={{ color: '#000000', textDecoration: 'underline' }}
                 >
                   French Canadian Verb Trainer v1.0
                 </a>
@@ -130,23 +150,22 @@ export default function App() {
         </Tree>
         <Tree
           name={
-            <span>
-              <a href="#/gradient">Gradient</a>
-            </span>
+            <a
+              href="https://bjblayney.github.io/pick-two/"
+              target="_blank"
+              style={{ color: '#000000', textDecoration: 'underline' }}
+            >
+              The Choice Paradox
+            </a>
           }
         >
           <span></span>
         </Tree>
         <Tree
           name={
-            <a
-              href="https://bjblayney.github.io/pick-two/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: '#37ceff', textDecoration: 'underline' }}
-            >
-              The Choice Paradox
-            </a>
+            <span>
+              <a href="#/gradient"  style={{ color: '#000000', textDecoration: 'underline' }}>Gradient</a>
+            </span>
           }
         >
           <span></span>
