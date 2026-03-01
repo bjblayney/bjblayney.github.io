@@ -1,59 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { collection, query, orderBy, limit, getDocs, startAfter } from 'firebase/firestore';
-import { db } from './firebase'; // Firestore config
-
+import { db } from './firebase';
 import { useSpring, animated } from '@react-spring/web';
-import { toggle } from './styles';
-import { BackSquareO } from './icons';
-
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-`;
-
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 2rem;
-`;
-
-const BackButton = styled(animated.button)`
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  font-size: 1rem;
-  color: #333;
-  padding: 0.5rem;
-  margin-right: 1rem;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
-  }
-`;
-
-const Title = styled.h1`
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  flex-grow: 1;
-`;
 
 const Gallery = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 1rem;
+  padding: ${(props) => (props.$embedded ? '16px' : '0')};
 `;
 
 const ImageWrapper = styled.div`
@@ -69,7 +24,7 @@ const StyledImage = styled(animated.img)`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 2px;
   aspect-ratio: 3/5;
 `;
 
@@ -77,20 +32,22 @@ const ImageItem = ({ src, alt }) => {
   const [props, set] = useSpring(() => ({ scale: 1 }));
   return (
     <ImageWrapper>
-      <StyledImage src={src} alt={alt} style={props} onMouseEnter={() => set({ scale: 1.05 })} onMouseLeave={() => set({ scale: 1 })} />
+      <StyledImage
+        src={src}
+        alt={alt}
+        style={props}
+        onMouseEnter={() => set({ scale: 1.03 })}
+        onMouseLeave={() => set({ scale: 1 })}
+      />
     </ImageWrapper>
   );
 };
 
-export default function ImageGallery() {
-  const [backButtonProps, setBackButtonProps] = useSpring(() => ({ x: 0 }));
+export default function ImageGallery({ embedded = false }) {
   const [images, setImages] = useState([]);
   const [lastVisible, setLastVisible] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate();
-
-  // Fetch initial batch of images
   const fetchImages = async () => {
     setLoading(true);
     const imagesRef = collection(db, 'images');
@@ -106,7 +63,6 @@ export default function ImageGallery() {
     setLoading(false);
   };
 
-  // Load more images on demand
   const loadMoreImages = async () => {
     if (!lastVisible) return;
 
@@ -125,41 +81,23 @@ export default function ImageGallery() {
   };
 
   useEffect(() => {
-    fetchImages(); // Fetch images on component mount
+    fetchImages();
   }, []);
 
-  const handleBackClick = () => {
-    navigate('/'); // Add your navigation logic here
-    console.log('Navigating back to main page');
-  };
-
   return (
-    <Container>
-      <Header>
-        <BackButton
-          onClick={handleBackClick}
-          onMouseEnter={() => setBackButtonProps({ x: 5 })}
-          onMouseLeave={() => setBackButtonProps({ x: 0 })}
-          style={backButtonProps}
-          aria-label="Go back to main page"
-        >
-          <BackSquareO style={{ ...toggle, opacity: 1, width: `50px` }} />
-          Back
-        </BackButton>
-        <Title>My Image Gallery</Title>
-      </Header>
-      <Gallery>
+    <div>
+      <Gallery $embedded={embedded}>
         {images.map((image) => (
           <ImageItem key={image.id} src={image.url} alt={image.alt} />
         ))}
       </Gallery>
       {lastVisible && (
-        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-          <button onClick={loadMoreImages} disabled={loading} style={{ padding: '0.75rem 2rem', fontSize: '1.1rem', borderRadius: 8, border: 'none', background: '#37ceff', color: '#fff', cursor: 'pointer' }}>
+        <div style={{ textAlign: 'center', marginTop: '1.5rem', paddingBottom: embedded ? 16 : 0 }}>
+          <button onClick={loadMoreImages} disabled={loading}>
             {loading ? 'Loading...' : 'Load More'}
           </button>
         </div>
       )}
-    </Container>
+    </div>
   );
 }

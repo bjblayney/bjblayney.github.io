@@ -1,0 +1,59 @@
+import React from 'react';
+import { useSpring, animated } from '@react-spring/web';
+import { Link } from 'react-router-dom';
+import {
+  BookPage,
+  BookTitle,
+  BookSubtitle,
+  BookAuthor,
+  HorizontalRule,
+  EditionTag,
+  EnterLink,
+} from './styles';
+
+export default function TitlePage() {
+  const fade = useSpring({
+    from: { opacity: 0, y: 20 },
+    to: { opacity: 1, y: 0 },
+    config: { tension: 120, friction: 14 },
+  });
+
+  return (
+    <BookPage>
+      <animated.div
+        style={{
+          opacity: fade.opacity,
+          transform: fade.y.to((y) => `translateY(${y}px)`),
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '70vh',
+        }}
+      >
+        <BookTitle>The Bureau</BookTitle>
+        <BookSubtitle>A Field Guide to Digital Projects</BookSubtitle>
+        <BookAuthor>BJ Blayney</BookAuthor>
+        <HorizontalRule />
+        <EditionTag>First Edition &mdash; {new Date().getFullYear()}</EditionTag>
+        <EnterLink as={Link} to="/contents">
+          Enter
+        </EnterLink>
+        <Link
+          to="/admin"
+          style={{
+            marginTop: 48,
+            fontFamily: "'Space Mono', monospace",
+            fontSize: '0.65rem',
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            color: '#D4C5A9',
+            textDecoration: 'none',
+          }}
+        >
+          Admin
+        </Link>
+      </animated.div>
+    </BookPage>
+  );
+}

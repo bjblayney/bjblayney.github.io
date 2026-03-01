@@ -6,8 +6,11 @@ body,
 }
 
 body {
-  font-family: system-ui;
+  font-family: 'EB Garamond', serif;
   margin: 0;
+  background: #FAF6F0;
+  color: #2C2C2C;
+  -webkit-font-smoothing: antialiased;
 }
 
 *,
@@ -16,45 +19,34 @@ body {
   box-sizing: border-box;
 }
 
-.image-grid {
-  display: flex;
-  align-items: center; /* Center align images vertically */
-  overflow-x: scroll;
-  scrollbar-width: thin; /* For Firefox */
-  scrollbar-color: #007bff #f1f1f1; /* For Firefox */
-  gap: 10px; /* Space between images */
-  padding: 10px; /* Space around the images */
+/* Global scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
 }
-
-/* For WebKit browsers (Chrome, Safari) */
-.image-grid::-webkit-scrollbar {
-  height: 8px; /* Height of horizontal scrollbar */
+::-webkit-scrollbar-track {
+  background: #FAF6F0;
 }
-
-.image-grid::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Background of the scrollbar track */
-}
-
-.image-grid::-webkit-scrollbar-thumb {
-  background-color: #007bff; /* Color of the scrollbar thumb */
-  border-radius: 10px; /* Rounded corners of the scrollbar thumb */
-  border: 2px solid #f1f1f1; /* Padding around the scrollbar thumb */
-}
-
-.image-grid img {
-  display: block; /* Ensure images are block elements */
-  margin: 0; /* Remove default margin */
+::-webkit-scrollbar-thumb {
+  background-color: #D4C5A9;
+  border-radius: 3px;
 }
 
 button {
   display: block;
   margin: 20px auto;
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
+  background-color: transparent;
+  color: #8B4513;
+  border: 1px solid #D4C5A9;
   cursor: pointer;
+  border-radius: 0;
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 button:hover {
-  background-color: #0056b3;
+  background-color: rgba(139, 69, 19, 0.06);
+  border-color: #8B4513;
 }
