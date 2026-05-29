@@ -75,6 +75,14 @@ const bookData = [
     date: '2024',
     type: 'demo',
   },
+  {
+    id: 'work-for-hire',
+    chapter: 7,
+    title: 'Work for Hire',
+    subtitle: 'Websites built for the world',
+    type: 'work',
+    href: '/work',
+  },
 ];
 
 export default bookData;

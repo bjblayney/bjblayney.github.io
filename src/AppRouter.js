@@ -4,6 +4,7 @@ import Admin from './Admin';
 import TitlePage from './TitlePage';
 import TableOfContents from './TableOfContents';
 import ChapterPage from './ChapterPage';
+import WorkPage from './WorkPage';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from './firebase';
 
@@ -20,6 +21,7 @@ function AppRouter() {
         <Route path="/" element={<TitlePage />} />
         <Route path="/contents" element={<TableOfContents />} />
         <Route path="/chapter/:id" element={<ChapterPage />} />
+        <Route path="/work" element={<WorkPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={user ? <Admin /> : <Navigate to="/login" />} />
       </Routes>
