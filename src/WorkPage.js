@@ -160,31 +160,50 @@ const EmailLink = styled.a`
 
 const sites = [
   {
-    id: 'sculpt-swagger',
-    name: 'Sculpt & Swagger',
-    tagline: 'Chrome extension landing page',
+    id: 'homewise',
+    name: 'Homewise',
+    tagline: 'Mortgage brokerage platform',
     description:
-      'A product marketing site for a Chrome extension. Clean single-page layout designed to convert visitors into installs.',
-    stack: ['React', 'CSS'],
-    url: '#', // TODO: replace with live URL
+      'The digital front door for a Canadian mortgage brokerage. Fully bilingual (EN/FR), with product analytics via PostHog and error tracking through Sentry. CI/CD on AWS CodeBuild.',
+    stack: ['Next.js', 'MUI', 'i18next', 'PostHog', 'AWS'],
+    url: 'https://thinkhomewise.com',
   },
   {
-    id: 'thinkhomewise',
-    name: 'Think Homewise',
-    tagline: 'Real estate research platform',
+    id: 'homewise-real-estate',
+    name: 'Homewise Real Estate',
+    tagline: 'Real estate listings & neighbourhood data',
     description:
-      'A homebuying research tool for Canadians. Surfaces neighbourhood data, school ratings, and commute estimates to help buyers make confident decisions.',
-    stack: ['React', 'Firebase'],
-    url: 'https://thinkhomewise.com',
+      'A map-driven property search tool with Leaflet and Google Maps layered views, Cognito-based auth, and schema validation via AJV. End-to-end tested with Cypress, deployed through AWS CodeBuild.',
+    stack: ['React 18', 'MUI', 'Leaflet', 'Cognito', 'Cypress', 'AWS'],
+    url: 'https://thinkhomewise.com/real-estate',
+  },
+  {
+    id: 'sculpt-swagger',
+    name: 'Sculpt & Swagger',
+    tagline: 'Dance fitness studio',
+    description:
+      'Website for a dance fitness studio. Class schedules, instructor bios, and online booking — designed to reflect the energy of the brand.',
+    stack: ['Next.js', 'Sanity CMS', 'Tailwind'],
+    url: 'https://sculptandswagger.com',
+  },
+  {
+    id: 'reddit-research',
+    name: 'Reddit Research Assistant',
+    tagline: 'Chrome extension for content research',
+    description:
+      'A browser extension that helps marketers and writers mine Reddit threads for content insights, audience language, and topic ideas.',
+    stack: ['Chrome Extension', 'JavaScript'],
+    url: 'https://chromewebstore.google.com/detail/reddit-research-assistant/koknmoejnkchdpghejlifncpeddfhhnl',
+    linkLabel: 'View in Chrome Web Store',
   },
   {
     id: 'janus',
     name: 'Janus',
-    tagline: 'TODO: add tagline',
+    tagline: 'Web analytics for small projects',
     description:
-      'TODO: add a one-line description of what Janus does and who it is for.',
-    stack: [],
-    url: '#', // TODO: replace with live URL
+      'A full-stack analytics platform with a Tufte-inspired UI — high data-ink ratio, tables over charts, minimal chrome. Prisma over Postgres, Redis for caching and rate-limiting, JWT auth with token refresh, and transactional email via Resend. Frontend on Cloudflare Pages, backend secured with Helmet.',
+    stack: ['Fastify', 'React', 'TypeScript', 'Vite', 'PostgreSQL', 'Redis'],
+    url: 'https://addjanus.ca',
   },
 ];
 
@@ -214,14 +233,11 @@ export default function WorkPage() {
 
         <div style={{ marginTop: 40, marginBottom: 32, textAlign: 'center' }}>
           <PageTitle>Work for Hire</PageTitle>
-          <PageSubtitle>Websites, tools, and interfaces</PageSubtitle>
+          <PageSubtitle>Ships that left the harbour</PageSubtitle>
         </div>
 
         <Intro>
-          I build for the web — clean, purposeful, and fast to ship. Whether you need
-          a landing page to launch a product, a web app for your customers, or a
-          portfolio to represent your work, I take projects from brief to live.
-          Below is a record of sites currently in the world.
+          I design, build, and ship web products. Platforms, tools, extensions — brief to production. Here is the live work.
         </Intro>
 
         <HorizontalRule style={{ maxWidth: '100%', margin: '36px 0' }} />
@@ -252,7 +268,7 @@ export default function WorkPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Visit site
+                      {site.linkLabel || 'Visit site'}
                     </VisitLink>
                   )}
                 </SiteEntry>
@@ -267,9 +283,7 @@ export default function WorkPage() {
 
         <CommissionBlock>
           <CommissionBody>
-            I work with individuals and small businesses. If you have a project in
-            mind — a new site, a rebuild, or something you haven't quite named yet —
-            send me a note and we can talk scope and timeline. No pitch decks required.
+            Have a project? Send a note. No decks, no calls — just scope and a timeline.
           </CommissionBody>
           <EmailLink href="mailto:bj.blayney@gmail.com">
             Get in touch
