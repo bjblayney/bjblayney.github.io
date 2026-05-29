@@ -39,20 +39,34 @@ export default function TitlePage() {
         <EnterLink as={Link} to="/contents">
           Enter
         </EnterLink>
-        <Link
-          to="/admin"
-          style={{
-            marginTop: 48,
-            fontFamily: "'Space Mono', monospace",
-            fontSize: '0.65rem',
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            color: '#D4C5A9',
-            textDecoration: 'none',
-          }}
-        >
-          Admin
-        </Link>
+        <div style={{ marginTop: 48, display: 'flex', gap: 32, justifyContent: 'center', alignItems: 'center' }}>
+          <Link
+            to="/work"
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: '0.68rem',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: '#8B4513',
+              textDecoration: 'none',
+            }}
+          >
+            Work for Hire
+          </Link>
+          <Link
+            to="/admin"
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: '0.65rem',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: '#D4C5A9',
+              textDecoration: 'none',
+            }}
+          >
+            Admin
+          </Link>
+        </div>
       </animated.div>
     </BookPage>
   );

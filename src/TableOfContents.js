@@ -28,7 +28,10 @@ export default function TableOfContents() {
       <TOCList>
         {trail.map((style, i) => {
           const chapter = bookData[i];
-          const action = chapter.type === 'project' ? 'visit' : 'view';
+          const action = chapter.type === 'project' ? 'visit'
+            : chapter.type === 'work' ? 'view'
+            : 'view';
+          const isExternal = chapter.type === 'work';
           return (
             <animated.div
               key={chapter.id}
@@ -38,7 +41,7 @@ export default function TableOfContents() {
               }}
             >
               <TOCEntry>
-                <Link to={`/chapter/${chapter.id}`}>
+                <Link to={isExternal ? chapter.href : `/chapter/${chapter.id}`}>
                   <TOCNumber>{String(chapter.chapter).padStart(2, '0')}</TOCNumber>
                   <TOCTitle>{chapter.title}</TOCTitle>
                   <TOCDotLeader />
