@@ -8,8 +8,8 @@ body,
 body {
   font-family: 'EB Garamond', serif;
   margin: 0;
-  background: #FAF6F0;
-  color: #2C2C2C;
+  background: #C4B5A2;
+  color: #2D1B0E;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -19,15 +19,14 @@ body {
   box-sizing: border-box;
 }
 
-/* Global scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAF6F0;
+  background: #C4B5A2;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #D4C5A9;
+  background-color: #8A7D6E;
   border-radius: 3px;
 }
 
@@ -35,18 +34,17 @@ button {
   display: block;
   margin: 20px auto;
   padding: 10px 20px;
-  background-color: transparent;
-  color: #8B4513;
-  border: 1px solid #D4C5A9;
+  background-color: #2D1B0E;
+  color: #FAFAF5;
+  border: none;
   cursor: pointer;
   border-radius: 0;
   font-family: 'Space Mono', monospace;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.8rem;
-  transition: background-color 0.2s, border-color 0.2s;
+  transition: background-color 0.15s;
 }
 button:hover {
-  background-color: rgba(139, 69, 19, 0.06);
-  border-color: #8B4513;
+  background-color: #1A5E63;
 }

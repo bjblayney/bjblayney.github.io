@@ -45,22 +45,23 @@ export default function ChapterPage() {
         </BackLink>
 
         <div style={{ marginTop: 32 }}>
-          <ChapterLabel>Chapter {String(chapter.chapter).padStart(2, '0')}</ChapterLabel>
+          <ChapterLabel>{chapter.label || chapter.type}</ChapterLabel>
           <ChapterTitle>{chapter.title}</ChapterTitle>
           {chapter.subtitle && <ChapterSubtitle>{chapter.subtitle}</ChapterSubtitle>}
         </div>
 
-        <MetadataBlock>
-          {chapter.techStack && (
+        {chapter.techStack && (
+          <MetadataBlock>
             <MetadataItem>Stack: {chapter.techStack.join(', ')}</MetadataItem>
-          )}
-          {chapter.version && <MetadataItem>v{chapter.version}</MetadataItem>}
-          {chapter.date && <MetadataItem>{chapter.date}</MetadataItem>}
-        </MetadataBlock>
+            {chapter.date && <MetadataItem>{chapter.date}</MetadataItem>}
+          </MetadataBlock>
+        )}
 
-        <ChapterBody>
-          <p>{chapter.description}</p>
-        </ChapterBody>
+        {chapter.description && (
+          <ChapterBody>
+            <p>{chapter.description}</p>
+          </ChapterBody>
+        )}
 
         {chapter.type === 'project' && (
           <ExternalLink href={chapter.href} target="_blank" rel="noopener noreferrer">

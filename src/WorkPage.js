@@ -5,44 +5,49 @@ import {
   BookPage,
   BackLink,
   HorizontalRule,
-  ExternalLink,
+  UMBER,
+  AQUA,
+  PAPER,
 } from './styles';
 import styled from 'styled-components';
-
-const CREAM = '#FAF6F0';
-const INK = '#2C2C2C';
-const BROWN = '#8B4513';
-const TAN = '#D4C5A9';
 
 const PageTitle = styled.h1`
   font-family: 'EB Garamond', serif;
   font-size: 2.6rem;
   font-weight: 700;
-  color: ${INK};
-  letter-spacing: 0.08em;
+  color: ${PAPER};
+  background: ${UMBER};
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   text-align: center;
-  margin: 0 0 10px;
+  padding: 10px 28px;
+  margin: 0 auto 10px;
+  width: fit-content;
+  box-shadow: 4px 4px 0 ${AQUA};
 
   @media (max-width: 600px) {
     font-size: 2rem;
+    padding: 8px 20px;
   }
 `;
 
 const PageSubtitle = styled.p`
   font-family: 'EB Garamond', serif;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-style: italic;
   text-align: center;
-  color: ${BROWN};
-  margin: 0 0 32px;
+  color: ${PAPER};
+  background: ${AQUA};
+  padding: 5px 16px;
+  margin: 0 auto 32px;
+  width: fit-content;
 `;
 
 const Intro = styled.p`
   font-family: 'EB Garamond', serif;
   font-size: 1.15rem;
   line-height: 1.8;
-  color: ${INK};
+  color: ${UMBER};
   margin: 0;
 `;
 
@@ -51,7 +56,7 @@ const SectionLabel = styled.p`
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: ${TAN};
+  color: ${UMBER};
   margin: 0 0 24px;
 `;
 
@@ -63,10 +68,10 @@ const SiteList = styled.div`
 
 const SiteEntry = styled.div`
   padding: 20px 0;
-  border-bottom: 1px solid ${TAN};
+  border-bottom: 1px solid ${UMBER};
 
   &:first-child {
-    border-top: 1px solid ${TAN};
+    border-top: 1px solid ${UMBER};
   }
 `;
 
@@ -74,7 +79,7 @@ const SiteName = styled.h2`
   font-family: 'EB Garamond', serif;
   font-size: 1.4rem;
   font-weight: 700;
-  color: ${INK};
+  color: ${UMBER};
   margin: 0 0 4px;
 `;
 
@@ -83,7 +88,7 @@ const SiteTagline = styled.p`
   font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: ${BROWN};
+  color: ${AQUA};
   margin: 0 0 10px;
 `;
 
@@ -91,7 +96,7 @@ const SiteDescription = styled.p`
   font-family: 'EB Garamond', serif;
   font-size: 1.05rem;
   line-height: 1.65;
-  color: #555;
+  color: ${UMBER};
   margin: 0 0 14px;
 `;
 
@@ -100,7 +105,7 @@ const SiteStack = styled.p`
   font-size: 0.62rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: ${TAN};
+  color: ${AQUA};
   margin: 0;
 `;
 
@@ -110,7 +115,7 @@ const VisitLink = styled.a`
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: ${BROWN};
+  color: ${AQUA};
   text-decoration: none;
   margin-top: 14px;
   transition: color 0.15s;
@@ -120,7 +125,7 @@ const VisitLink = styled.a`
   }
 
   &:hover {
-    color: ${INK};
+    color: ${UMBER};
   }
 `;
 
@@ -132,7 +137,7 @@ const CommissionBody = styled.p`
   font-family: 'EB Garamond', serif;
   font-size: 1.15rem;
   line-height: 1.8;
-  color: ${INK};
+  color: ${UMBER};
   margin: 0 0 24px;
 `;
 
@@ -142,15 +147,14 @@ const EmailLink = styled.a`
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: ${BROWN};
+  color: ${PAPER};
+  background: ${UMBER};
   text-decoration: none;
   padding: 12px 28px;
-  border: 1px solid ${TAN};
-  transition: border-color 0.2s, background-color 0.2s;
+  transition: background-color 0.15s;
 
   &:hover {
-    border-color: ${BROWN};
-    background-color: rgba(139, 69, 19, 0.04);
+    background: ${AQUA};
   }
 
   &::before {

@@ -1,10 +1,18 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-// -- Book palette --
-const CREAM = '#FAF6F0';
-const INK = '#2C2C2C';
-const BROWN = '#8B4513';
-const TAN = '#D4C5A9';
+// -- Block print palette --
+export const TAUPE = '#C4B5A2';
+export const UMBER = '#2D1B0E';
+export const AQUA = '#1A5E63';
+export const PAPER = '#FAFAF5';
+export const CARD_BG = '#D6CBBA';
+
+// -- Letterpress deboss --
+export const deboss = css`
+  text-shadow:
+    0 1px 0 rgba(250, 250, 245, 0.35),
+    0 -1px 0 rgba(45, 27, 14, 0.1);
+`;
 
 // ------- Layout -------
 
@@ -19,31 +27,41 @@ export const BookPage = styled.div`
   }
 `;
 
+export const WidePage = styled(BookPage)`
+  max-width: 780px;
+`;
+
 // ------- Title Page -------
 
 export const BookTitle = styled.h1`
   font-family: 'EB Garamond', serif;
-  font-size: 3.2rem;
+  font-size: 4rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   text-align: center;
-  color: ${INK};
-  margin: 0 0 12px;
+  color: ${PAPER};
+  background: ${UMBER};
+  padding: 14px 32px;
+  margin: 0 0 6px;
+  box-shadow: 5px 5px 0 ${AQUA};
 
   @media (max-width: 600px) {
-    font-size: 2.4rem;
+    font-size: 2.6rem;
+    padding: 10px 20px;
+    box-shadow: 4px 4px 0 ${AQUA};
   }
 `;
 
 export const BookSubtitle = styled.p`
   font-family: 'EB Garamond', serif;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-style: italic;
   text-align: center;
-  color: ${BROWN};
-  margin: 0 0 24px;
-  letter-spacing: 0.02em;
+  color: ${PAPER};
+  background: ${AQUA};
+  padding: 6px 20px;
+  margin: 8px 0 24px;
 `;
 
 export const BookAuthor = styled.p`
@@ -52,15 +70,16 @@ export const BookAuthor = styled.p`
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: ${INK};
+  color: ${UMBER};
   margin: 0 0 32px;
 `;
 
 export const HorizontalRule = styled.hr`
   border: none;
-  border-top: 1px solid ${TAN};
+  height: 3px;
+  background: ${UMBER};
   margin: 24px auto;
-  max-width: 200px;
+  max-width: 80px;
 `;
 
 export const EditionTag = styled.p`
@@ -69,148 +88,187 @@ export const EditionTag = styled.p`
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: ${TAN};
+  color: ${UMBER};
   margin: 0;
 `;
 
 export const EnterLink = styled.a`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
+  display: inline-block;
   font-family: 'Space Mono', monospace;
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: ${BROWN};
+  color: ${PAPER};
+  background: ${UMBER};
   text-decoration: none;
   margin-top: 48px;
-  padding: 12px 0;
-  margin-left: auto;
-  margin-right: auto;
-  transition: color 0.2s;
-
-  &::before {
-    content: '\\2767';
-    font-size: 1.1rem;
-    color: ${TAN};
-    transition: color 0.2s;
-  }
-
-  &::after {
-    content: '\\2767';
-    font-size: 1.1rem;
-    color: ${TAN};
-    transform: scaleX(-1);
-    transition: color 0.2s;
-  }
+  padding: 12px 36px;
+  transition: background-color 0.15s;
 
   &:hover {
-    color: ${INK};
-
-    &::before,
-    &::after {
-      color: ${BROWN};
-    }
+    background: ${AQUA};
   }
 `;
 
-// ------- Table of Contents -------
+// ------- Table of Contents — Card Layout -------
 
 export const TOCHeading = styled.h2`
   font-family: 'EB Garamond', serif;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 700;
   text-align: center;
-  color: ${INK};
-  margin: 0 0 40px;
+  color: ${PAPER};
+  background: ${UMBER};
+  padding: 8px 28px;
+  margin: 0 auto 40px;
+  width: fit-content;
   letter-spacing: 0.06em;
+  box-shadow: 4px 4px 0 ${AQUA};
 `;
 
-export const TOCList = styled.ol`
-  list-style: none;
-  padding: 0;
-  margin: 0;
+export const CardGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
-export const TOCEntry = styled.li`
-  margin-bottom: 16px;
+const cardBase = css`
+  position: relative;
+  background: ${PAPER};
+  border: 2px solid ${UMBER};
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 3px 3px 0 ${AQUA};
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 ${AQUA};
+  }
 
   a {
-    display: flex;
-    align-items: baseline;
     text-decoration: none;
-    color: ${INK};
-    transition: color 0.15s;
-    gap: 12px;
-
-    &:hover {
-      color: ${BROWN};
-    }
+    color: inherit;
+    display: block;
+    height: 100%;
   }
 `;
 
-export const TOCNumber = styled.span`
+export const Card = styled.div`
+  ${cardBase}
+  border-top: 6px solid ${UMBER};
+  padding: 24px 24px 20px;
+`;
+
+export const FeaturedCard = styled.div`
+  ${cardBase}
+  border-top: 10px solid ${UMBER};
+  padding: 28px 28px 24px;
+`;
+
+export const CardLabel = styled.span`
+  display: inline-block;
   font-family: 'Space Mono', monospace;
-  font-size: 0.8rem;
-  flex-shrink: 0;
-  min-width: 28px;
-  color: ${BROWN};
-`;
-
-export const TOCTitle = styled.span`
-  font-family: 'EB Garamond', serif;
-  font-size: 1.2rem;
-  flex-shrink: 1;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-  @media (max-width: 480px) {
-    font-size: 1.05rem;
-  }
-`;
-
-export const TOCDotLeader = styled.span`
-  flex: 1;
-  border-bottom: 1px dotted ${TAN};
-  margin: 0 8px;
-  position: relative;
-  top: -4px;
-  min-width: 20px;
-`;
-
-export const TOCAction = styled.span`
-  font-family: 'Space Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  flex-shrink: 0;
-  color: ${BROWN};
+  letter-spacing: 0.12em;
+  color: ${PAPER};
+  background: ${AQUA};
+  padding: 3px 8px;
+  margin-bottom: 12px;
+`;
+
+export const CardTitle = styled.h3`
+  font-family: 'EB Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: ${UMBER};
+  margin: 0 0 6px;
+  line-height: 1.2;
+`;
+
+export const FeaturedCardTitle = styled(CardTitle)`
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+`;
+
+export const CardSubtitle = styled.p`
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: ${AQUA};
+  margin: 0;
+  line-height: 1.4;
+`;
+
+export const GroupCard = styled.div`
+  background: ${CARD_BG};
+  padding: 24px;
+  border: 1px solid ${UMBER};
+`;
+
+export const GroupLabel = styled.span`
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: ${UMBER};
+  margin-bottom: 14px;
+`;
+
+export const GroupList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 28px;
+`;
+
+export const GroupItem = styled.a`
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem;
+  color: ${UMBER};
+  text-decoration: none;
+  transition: color 0.15s;
+
+  &:hover {
+    color: ${AQUA};
+  }
+
+  &::after {
+    content: '\\00a0\\2192';
+    font-size: 0.85rem;
+  }
 `;
 
 // ------- Chapter Page -------
 
 export const ChapterLabel = styled.p`
+  display: inline-block;
   font-family: 'Space Mono', monospace;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: ${BROWN};
-  margin: 0 0 8px;
+  letter-spacing: 0.12em;
+  color: ${PAPER};
+  background: ${AQUA};
+  padding: 3px 10px;
+  margin: 0 0 12px;
 `;
 
 export const ChapterTitle = styled.h1`
   font-family: 'EB Garamond', serif;
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   font-weight: 700;
-  color: ${INK};
+  color: ${UMBER};
   margin: 0 0 6px;
-  line-height: 1.2;
+  line-height: 1.15;
+  ${deboss}
 
   @media (max-width: 600px) {
-    font-size: 1.9rem;
+    font-size: 2rem;
   }
 `;
 
@@ -218,7 +276,7 @@ export const ChapterSubtitle = styled.p`
   font-family: 'EB Garamond', serif;
   font-size: 1.15rem;
   font-style: italic;
-  color: ${BROWN};
+  color: ${AQUA};
   margin: 0 0 28px;
 `;
 
@@ -226,17 +284,17 @@ export const ChapterBody = styled.div`
   font-family: 'EB Garamond', serif;
   font-size: 1.15rem;
   line-height: 1.75;
-  color: ${INK};
+  color: ${UMBER};
   margin-bottom: 32px;
 `;
 
 export const MetadataBlock = styled.div`
   font-family: 'Space Mono', monospace;
   font-size: 0.75rem;
-  color: #7A7A7A;
+  color: ${UMBER};
   letter-spacing: 0.04em;
-  border-top: 1px solid ${TAN};
-  border-bottom: 1px solid ${TAN};
+  border-top: 2px solid ${UMBER};
+  border-bottom: 2px solid ${UMBER};
   padding: 12px 0;
   margin-bottom: 32px;
   display: flex;
@@ -250,8 +308,7 @@ export const MetadataItem = styled.span`
 
 export const FigureContainer = styled.div`
   margin: 24px 0;
-  border: 1px solid ${TAN};
-  border-radius: 2px;
+  border: 2px solid ${UMBER};
   overflow: hidden;
 `;
 
@@ -261,12 +318,12 @@ export const BackLink = styled.a`
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: ${BROWN};
+  color: ${AQUA};
   text-decoration: none;
   transition: color 0.15s;
 
   &:hover {
-    color: ${INK};
+    color: ${UMBER};
   }
 
   &::before {
@@ -280,15 +337,15 @@ export const ExternalLink = styled.a`
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: ${BROWN};
+  color: ${PAPER};
+  background: ${UMBER};
   text-decoration: none;
-  padding: 10px 24px;
-  border: 1px solid ${TAN};
-  transition: border-color 0.2s, background-color 0.2s;
+  padding: 12px 28px;
+  border: none;
+  transition: background-color 0.15s;
 
   &:hover {
-    border-color: ${BROWN};
-    background-color: rgba(139, 69, 19, 0.04);
+    background: ${AQUA};
   }
 
   &::after {
