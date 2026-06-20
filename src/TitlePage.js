@@ -34,7 +34,7 @@ export default function TitlePage() {
         }}
       >
         <BookTitle>The Bureau</BookTitle>
-        <BookSubtitle>A Field Guide to Digital Projects</BookSubtitle>
+        <BookSubtitle>Work, Experiments &amp; Craft</BookSubtitle>
         <BookAuthor>BJ Blayney</BookAuthor>
         <HorizontalRule />
         <EditionTag>First Edition &mdash; {new Date().getFullYear()}</EditionTag>

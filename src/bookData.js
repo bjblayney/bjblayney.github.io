@@ -2,10 +2,10 @@ const bookData = [
   {
     id: 'photo-gallery',
     title: 'Photo Gallery',
-    subtitle: 'A curated image collection',
+    subtitle: 'A personal photo archive',
     label: 'Gallery',
     description:
-      'A gallery of photographs stored in Firestore. Browse images with lazy loading and infinite scroll.',
+      'Personal photographs served from Firestore. Lazy-loaded with infinite scroll — production infrastructure, personal subject matter.',
     techStack: ['React', 'Firebase', 'Firestore'],
     date: '2024',
     type: 'gallery',
@@ -14,7 +14,7 @@ const bookData = [
   {
     id: 'work-for-hire',
     title: 'Work for Hire',
-    subtitle: 'Ships that left the harbour',
+    subtitle: 'Client work, live in production',
     label: 'Portfolio',
     type: 'work',
     href: '/work',
@@ -26,7 +26,7 @@ const bookData = [
     subtitle: 'An animated color field',
     label: 'Experiment',
     description:
-      'A continuously rotating gradient that cycles through the full spectrum. Pure CSS animation with a dynamic angle parameter.',
+      'A gradient cycling through the full hue spectrum. Pure CSS, nothing more.',
     techStack: ['React', 'CSS'],
     date: '2024',
     type: 'demo',
@@ -38,7 +38,7 @@ const bookData = [
     subtitle: 'Pick two, sacrifice one',
     label: 'Experiment',
     description:
-      'A playful decision-making experiment. Given three desirable options, you must choose only two — exploring the psychology of trade-offs and opportunity cost.',
+      'Three options. Choose two, sacrifice one. A small experiment in the psychology of trade-offs.',
     techStack: ['React', 'JavaScript'],
     date: '2024',
     href: '/pick-two/',
@@ -50,7 +50,7 @@ const bookData = [
     title: 'Daily Quiz',
     subtitle: 'A daily development exercise engine',
     description:
-      'A timed quiz application that serves a fresh set of development-related questions each day. Tracks streaks, scores, and progress over time.',
+      'Fresh development questions every day, with streak tracking and scoring. The tool I wanted and couldn\'t find.',
     techStack: ['React', 'JavaScript'],
     date: '2024',
     href: '/dev-reps/',
@@ -63,7 +63,7 @@ const bookData = [
     title: 'Geography Quiz',
     subtitle: 'Canadian geography drills',
     description:
-      'An interactive quiz covering Canadian provinces, territories, capitals, and geographic features. Multiple game modes with increasing difficulty.',
+      'Canadian geography drills: provinces, territories, capitals. Multiple modes, increasing difficulty.',
     techStack: ['React', 'JavaScript'],
     date: '2024',
     href: '/can-geo-game/',
@@ -76,7 +76,7 @@ const bookData = [
     title: 'French Canadian Verb Trainer',
     subtitle: 'Conjugation practice for Quebecois French',
     description:
-      'A verb conjugation trainer focused on Canadian French. Drill present, past, and future tenses with spaced-repetition scoring.',
+      'Conjugation drills for Québécois French — present, past, and future tenses with spaced-repetition scoring. Built while learning.',
     techStack: ['React', 'JavaScript'],
     date: '2024',
     href: '/french-verb-trainer/',

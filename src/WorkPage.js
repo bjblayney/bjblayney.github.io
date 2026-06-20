@@ -237,11 +237,11 @@ export default function WorkPage() {
 
         <div style={{ marginTop: 40, marginBottom: 32, textAlign: 'center' }}>
           <PageTitle>Work for Hire</PageTitle>
-          <PageSubtitle>Ships that left the harbour</PageSubtitle>
+          <PageSubtitle>Client work, live in production</PageSubtitle>
         </div>
 
         <Intro>
-          I design, build, and ship web products. Platforms, tools, extensions — brief to production. Here is the live work.
+          I build web products from brief to browser — platforms, tools, extensions. Here is the live work.
         </Intro>
 
         <HorizontalRule style={{ maxWidth: '100%', margin: '36px 0' }} />
